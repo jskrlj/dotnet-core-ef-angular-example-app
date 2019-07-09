@@ -34,6 +34,7 @@ export class PaymentDetailComponent implements OnInit {
       res => {
         this.resetForm(form);
         this.toastr.success("Submitted","Payment Detail Register");
+        this.service.refreshList();
       },
       err =>{
         console.log(err);

@@ -15,9 +15,8 @@ export class PaymentDetailListComponent implements OnInit {
     this.service.refreshList();
   }
 
-  populateForm(pd:PaymentDetail){
-    console.log(pd);
-    this.service.formData = pd;
+  populateForm(pd: PaymentDetail){
+    this.service.formData = Object.assign({},pd);
   }
 
 }
