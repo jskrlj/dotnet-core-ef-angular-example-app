@@ -26,7 +26,7 @@ namespace webAPI.Controllers
         {
             return _context.PaymentDetails;
         }
-
+        
         // GET: api/PaymentDetails/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPaymentDetail([FromRoute] int id)
