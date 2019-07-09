@@ -38,6 +38,7 @@ namespace webAPI
             //options.UseSqlServer(Configuration.GetConnectionString("FileConnection")));
             services.AddDbContext<ConferenceContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("FileConnection")));
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +48,12 @@ namespace webAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(options =>
+                options.WithOrigins("http://localhost:4200")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
 
             app.UseMvc();
         }
