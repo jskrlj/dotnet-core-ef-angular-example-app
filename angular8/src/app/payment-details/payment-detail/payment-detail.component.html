@@ -1,6 +1,6 @@
 <!-- <p>payment-detail works!</p> -->
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-    <input type="hidden" name="ID" value="service.ID">
+    <input type="hidden" name="ID" [value]="service.formData.ID">
     <div class="form-group">
         <input name="CardOwnerName" #CardOwnerName="ngModel" [(ngModel)]="service.formData.CardOwnerName" class="form-control" placeholder="Card Owner Name">
     </div>
