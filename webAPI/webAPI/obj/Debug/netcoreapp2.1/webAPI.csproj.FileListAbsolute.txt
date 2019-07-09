@@ -1,0 +1,14 @@
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\bin\Debug\netcoreapp2.1\webAPI.deps.json
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\bin\Debug\netcoreapp2.1\webAPI.runtimeconfig.json
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\bin\Debug\netcoreapp2.1\webAPI.runtimeconfig.dev.json
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\bin\Debug\netcoreapp2.1\webAPI.dll
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\obj\Debug\netcoreapp2.1\webAPI.csprojAssemblyReference.cache
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\obj\Debug\netcoreapp2.1\webAPI.csproj.CoreCompileInputs.cache
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\obj\Debug\netcoreapp2.1\webAPI.RazorAssemblyInfo.cache
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\obj\Debug\netcoreapp2.1\webAPI.RazorAssemblyInfo.cs
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\obj\Debug\netcoreapp2.1\webAPI.AssemblyInfoInputs.cache
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\obj\Debug\netcoreapp2.1\webAPI.AssemblyInfo.cs
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\obj\Debug\netcoreapp2.1\webAPI.RazorTargetAssemblyInfo.cache
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\bin\Debug\netcoreapp2.1\webAPI.pdb
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\obj\Debug\netcoreapp2.1\webAPI.dll
+C:\Users\Janez\Documents\FRI-lab\dotnet_core_example\webAPI\webAPI\obj\Debug\netcoreapp2.1\webAPI.pdb
