@@ -24,6 +24,7 @@ import { ShirtDetailService } from './shirt-details/shirt-detail.service';
 import { MatSnackBarModule } from '@angular/material';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MainFormComponent } from './main-form/main-form.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ShirtDetailComponent,
     ShirtDetailListComponent,
     ShirtDetailsComponent,
+    MainFormComponent,
   ],
   imports: [
     BrowserModule,
