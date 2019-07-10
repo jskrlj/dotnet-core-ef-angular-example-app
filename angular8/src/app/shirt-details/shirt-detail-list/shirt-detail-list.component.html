@@ -1,0 +1,16 @@
+<table class="table table-hover">
+        <tr>
+            <th>Size</th>
+            <th>Color</th>
+            <th>Logo</th>
+        </tr>
+        <tr *ngFor="let sh of service.list">
+            <td (click)="populateForm(sh)">{{sh.Size}}</td>
+            <td (click)="populateForm(sh)">{{sh.Color}}</td>
+            <td (click)="populateForm(sh)">{{sh.ShirtLogo}}</td>
+            <td>
+                <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(sh.ID)"></i>
+            </td>
+        </tr>
+    </table>
+    

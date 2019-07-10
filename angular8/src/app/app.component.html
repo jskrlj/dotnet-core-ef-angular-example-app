@@ -10,11 +10,12 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">Main Form</a>
 				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Payment Details <span class="sr-only">(current)</span></a>
+				<li class="nav-item" routerLinkActive='active'>
+					<a class="nav-link" routerLink='payment-details' >Payment Detail </a>
+					<!-- <a class="nav-link" routerLink='payment-details'>Payment Details <span class="sr-only">(current)</span></a> -->
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Shirt Details</a>
+				<li class="nav-item" routerLinkActive='active'>
+					<a class="nav-link" routerLink='shirt-details'>Shirt Details</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Person Details</a>
@@ -28,5 +29,6 @@
 			</span> -->
 		</div>
 	</nav>
-	<app-payment-details></app-payment-details>
+	<!-- <app-payment-details></app-payment-details> -->
+	<router-outlet></router-outlet>
 </div>

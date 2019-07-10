@@ -11,10 +11,19 @@ import { AppComponent } from './app.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { PaymentDetailComponent } from './payment-details/payment-detail/payment-detail.component';
 import { PaymentDetailListComponent } from './payment-details/payment-detail-list/payment-detail-list.component';
-import { PaymentDetailService } from './shared/payment-detail.service';
+import { PaymentDetailService } from './payment-details/payment-detail.service';
+
+import { ShirtDetailComponent } from './shirt-details/shirt-detail/shirt-detail.component';
+import { ShirtDetailListComponent } from './shirt-details/shirt-detail-list/shirt-detail-list.component';
+import { ShirtDetailsComponent } from './shirt-details/shirt-details.component';
+import { ShirtDetailService } from './shirt-details/shirt-detail.service';
+
+
+
 
 import { MatSnackBarModule } from '@angular/material';
-import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -22,7 +31,14 @@ import { RouterModule, Routes } from '@angular/router';
     AppComponent,
     PaymentDetailsComponent,
     PaymentDetailComponent,
-    PaymentDetailListComponent
+    PaymentDetailListComponent,
+    routingComponents,
+    PageNotFoundComponent,
+    
+
+    ShirtDetailComponent,
+    ShirtDetailListComponent,
+    ShirtDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,10 +46,11 @@ import { RouterModule, Routes } from '@angular/router';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    MatSnackBarModule,
+    MatSnackBarModule, 
+    AppRoutingModule,
 
   ],
-  providers: [PaymentDetailService],
+  providers: [PaymentDetailService, ShirtDetailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

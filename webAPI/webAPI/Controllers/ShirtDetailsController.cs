@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +26,16 @@ namespace webAPI.Controllers
         [HttpGet]
         public IEnumerable<ShirtDetail> GetShirtDetails()
         {
+            //return _context.ShirtDetails.Include(s => GetDisplayName(s.ShirtLogo));
             return _context.ShirtDetails;
+        }
+
+        public static string GetDisplayName(Enum enumValue)
+        {
+            return enumValue.GetType()?
+           .GetMember(enumValue.ToString())?[0]?
+           .GetCustomAttribute<DisplayAttribute>()?
+           .Name;
         }
 
         // GET: api/ShirtDetails/5

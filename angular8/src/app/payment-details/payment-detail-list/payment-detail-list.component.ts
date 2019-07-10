@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PaymentDetailService } from 'src/app/shared/payment-detail.service';
-import { PaymentDetail } from 'src/app/shared/payment-detail.model';
+import { PaymentDetailService } from 'src/app/payment-details/payment-detail.service';
+import { PaymentDetail } from 'src/app/payment-details/payment-detail.model';
 import { ToastrService } from 'ngx-toastr';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material';
 

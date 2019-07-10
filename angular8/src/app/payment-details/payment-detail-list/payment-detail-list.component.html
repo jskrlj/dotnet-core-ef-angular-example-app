@@ -1,4 +1,9 @@
 <table class="table table-hover">
+    <tr>
+        <th>Card Owner</th>
+        <th>Card Number</th>
+        <th>Expiration Date</th>
+    </tr>
     <tr *ngFor="let pd of service.list">
         <td (click)="populateForm(pd)">{{pd.CardOwnerName}}</td>
         <td (click)="populateForm(pd)">{{pd.CardNumber}}</td>
