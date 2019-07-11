@@ -4,20 +4,20 @@ import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-shirt-detail',
-  templateUrl: './shirt-detail.component.html',
-  styles: []
+	selector: 'app-shirt-detail',
+	templateUrl: './shirt-detail.component.html',
+	styles: []
 })
 export class ShirtDetailComponent implements OnInit {
 
-  constructor(private service: ShirtDetailService,
+	constructor(private service: ShirtDetailService,
 		private toastr: ToastrService) { }
 
-  ngOnInit() {
+	ngOnInit() {
 		this.resetForm();
-  }
+	}
 
-  resetForm(form?: NgForm) {
+	resetForm(form?: NgForm) {
 		if (form != null)
 			form.form.reset();
 		this.service.formData = {
