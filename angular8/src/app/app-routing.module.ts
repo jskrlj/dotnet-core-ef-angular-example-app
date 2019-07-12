@@ -5,15 +5,17 @@ import { ShirtDetailsComponent } from './shirt-details/shirt-details.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DynamicFormExampleComponent } from './dynamic-form-example/dynamic-form-example.component';
+import { MainFormComponent } from './main-form/main-form.component';
 
 const routes: Routes = [
+  { path: '',   redirectTo: '/main-form', pathMatch: 'full' },
   { path: 'payment-details', component: PaymentDetailsComponent },
   { path: 'shirt-details', component: ShirtDetailsComponent },
-  // { path: 'dynamic-form-example', component: DynamicFormExampleComponent },
-  // { path: '',   redirectTo: '/payment-details', pathMatch: 'full' },
-  // { path: '',  component: MainFormComponent },
-  { path: '',  component: DynamicFormExampleComponent },
+  { path: 'dynamic-form-example', component: DynamicFormExampleComponent },
+  { path: 'main-form',  component: MainFormComponent },
 
+  // { path: '',  component: MainFormComponent },
+  // { path: '',  component: MainFormComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

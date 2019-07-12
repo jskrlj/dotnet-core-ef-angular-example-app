@@ -36,7 +36,7 @@ namespace webAPI
 
             //services.AddDbContext<PaymentDetailContext>(options =>
             //options.UseSqlServer(Configuration.GetConnectionString("FileConnection")));
-            services.AddDbContext<ConferenceContext>(options =>
+            services.AddDbContext<DynFormsContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("FileConnection")));
             services.AddCors();
         }

@@ -24,6 +24,7 @@ import { ShirtDetailService } from './shirt-details/shirt-detail.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DynamicFormExampleComponent } from './dynamic-form-example/dynamic-form-example.component';
 
+import { MainFormComponent } from "./main-form/main-form.component";
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { DynamicFormExampleComponent } from './dynamic-form-example/dynamic-form
     PaymentDetailListComponent,
     routingComponents,
     PageNotFoundComponent,   
-
+    MainFormComponent,
     ShirtDetailComponent,
     ShirtDetailListComponent,
     ShirtDetailsComponent,
