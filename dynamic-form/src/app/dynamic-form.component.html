@@ -1,0 +1,27 @@
+<div>
+	<mat-card>
+		<mat-card-title>
+			<h1>Main form</h1>
+		</mat-card-title>
+
+
+		<form (ngSubmit)="onSubmit()" [formGroup]="form">
+			<div *ngFor="let question of questions" class="form-row">
+				<app-question [question]="question" [form]="form"></app-question>
+			</div>
+
+
+
+
+			<div class="form-row">
+				<!-- <button type="submit" [disabled]="!form.valid">Submit</button> -->
+				<button mat-raised-button [disabled]="!form.valid" color="primary">Submit</button>
+			</div>
+		</form>
+
+		<div *ngIf="payLoad" class="form-row">
+			<strong>Saved the following values</strong><br>{{payLoad}}
+		</div>
+	</mat-card>
+
+</div>
