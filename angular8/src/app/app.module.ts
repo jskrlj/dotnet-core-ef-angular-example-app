@@ -5,8 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 import { ToastrModule } from 'ngx-toastr';
-import { MatSnackBarModule, MatInputModule, MatSelectModule,MatButtonModule,MatCheckboxModule,MatChipsModule } from '@angular/material';
-import { FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { MatSnackBarModule, MatInputModule, MatSelectModule, MatButtonModule, MatCheckboxModule, MatChipsModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 
 import { AppComponent } from './app.component';
@@ -34,7 +34,7 @@ import { MainFormComponent } from "./main-form/main-form.component";
     PaymentDetailComponent,
     PaymentDetailListComponent,
     routingComponents,
-    PageNotFoundComponent,   
+    PageNotFoundComponent,
     MainFormComponent,
     ShirtDetailComponent,
     ShirtDetailListComponent,
@@ -47,7 +47,7 @@ import { MainFormComponent } from "./main-form/main-form.component";
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    MatSnackBarModule, 
+    MatSnackBarModule,
     AppRoutingModule,
     ReactiveFormsModule,
     MatInputModule,

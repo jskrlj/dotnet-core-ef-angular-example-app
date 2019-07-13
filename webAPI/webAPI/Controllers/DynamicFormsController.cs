@@ -23,11 +23,38 @@ namespace webAPI.Controllers
 
         // GET: api/DynamicForms
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> GetForms()
         {
 
+            var forms = await _context.Forms
+                .Include(fo => fo.Fields)
+                .ThenInclude(field => field.Value).ToListAsync();
 
-            return new string[] { "value1", "value2" };
+
+            foreach (Form fo in forms) {
+                foreach (Field fi in fo.Fields)
+                {
+                    fi.Form = null;
+                    fi.Value.Form = null;
+                    fi.Value.Field = null;
+          
+                }
+
+            }
+
+
+
+
+            if (forms == null)
+            {
+                //System.Diagnostics.Debug.WriteLine(ex.ToString());
+                return NotFound();
+            }
+
+
+            return Ok(forms);
+
+
         }
 
 
