@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using webAPI.Models;
 
@@ -24,17 +25,66 @@ namespace webAPI.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+
+
             return new string[] { "value1", "value2" };
         }
 
+
+
+
+
+
         // GET: api/DynamicForms/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+
+
+
+            await _context.Forms
+                .Include(fo => fo.Fields)
+                .ThenInclude(field => field.Value)
+                .Where(fo => fo.ID == id).ToListAsync();
+
+            var form = await _context.Forms.FindAsync(id);
+            var fields = form.Fields;
+
+            var ret_form = new Form();
+            ret_form.Fields = new List<Field>();
+            ret_form.ID = form.ID;
+
+            foreach (Field fi in fields)
+            {
+                Field tmp_fi = new Field();
+                tmp_fi.Name = fi.Name;
+                tmp_fi.ID = fi.ID;
+                Value tmp_val = new Value();
+                tmp_val.value = fi.Value.value;
+                tmp_val.ID = fi.Value.ID;
+                tmp_fi.Value = tmp_val;
+                ret_form.Fields.Add(tmp_fi);
+            }
+
+
+            if (form == null)
+            {
+                //System.Diagnostics.Debug.WriteLine(ex.ToString());
+
+                return NotFound();
+            }
+
+
+            return Ok(ret_form);
+
+
         }
 
-        // POST: api/DynamicForms
+
+
+
+
+            // POST: api/DynamicForms
         [HttpPost]
         public string Post([FromBody] string value)
         {
@@ -73,12 +123,15 @@ namespace webAPI.Controllers
 
 
                 _context.SaveChanges();
-                return dictObj.Keys.ToList()[0] + "success!";
+                return "success!";
 
             }
             catch (Exception ex)
             {
-                return ex.ToString();     
+
+                //System.Diagnostics.Debug.WriteLine(ex.ToString());
+                return ex.ToString();
+                //return "There was an error";
             }
            
         }

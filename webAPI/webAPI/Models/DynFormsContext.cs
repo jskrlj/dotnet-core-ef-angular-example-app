@@ -11,7 +11,7 @@ namespace webAPI.Models
 
         public DynFormsContext(DbContextOptions<DynFormsContext> options) : base(options)
         {
-
+            
         }
 
         public DbSet<Form> Forms { get; set; }

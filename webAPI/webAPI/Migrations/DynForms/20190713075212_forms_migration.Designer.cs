@@ -10,7 +10,7 @@ using webAPI.Models;
 namespace webAPI.Migrations.DynForms
 {
     [DbContext(typeof(DynFormsContext))]
-    [Migration("20190712124329_forms_migration")]
+    [Migration("20190713075212_forms_migration")]
     partial class forms_migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
