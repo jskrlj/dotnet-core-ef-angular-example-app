@@ -1,21 +1,23 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { QuestionBase } from './question-base';
-import { QuestionControlService } from './question-control.service';
+import { QuestionBase } from '../../question-base';
+import { QuestionControlService } from '../../question-control.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-dynamic-form',
 	templateUrl: './dynamic-form.component.html',
-	providers: [QuestionControlService]
+	providers: [QuestionControlService],
 })
 export class DynamicFormComponent implements OnInit {
 
 	@Input() questions: QuestionBase<any>[] = [];
 	form: FormGroup;
 	payLoad = '';
-
-	constructor(private qcs: QuestionControlService) { }
+	  
+	constructor(private qcs: QuestionControlService,
+		private toastr: ToastrService) { }
 
 	ngOnInit() {
 		this.form = this.qcs.toFormGroup(this.questions);
@@ -27,31 +29,27 @@ export class DynamicFormComponent implements OnInit {
 		// this.qcs.postFormData();
 	}
 
+	onTest(){
+		this.qcs.refreshList();
+	}
+
 	resetForm(form?: FormGroup) {
 		if (form != null)
-			form.reset();
-		// this.service.formData = {
-		// 	ID: 0,
-		// 	CardOwnerName: '',
-		// 	CardNumber: '',
-		// 	ExpirationDate: '',
-		// 	CVV: '',
-		// };
+			form.reset();		
 	}
 
 	insertRecord(form: FormGroup) {
-		console.log(this.payLoad);
 		this.qcs.postFormFields(this.payLoad).subscribe(
 		  res => {
 			this.resetForm(form);
 			console.log(res);
-		    // this.toastr.success("Submitted successfully", "Shirt Detail Register");
+		    this.toastr.success("Submitted successfully", "Dynamic Form Submission");
 		    // this.service.refreshList();
 		  },
 		  err => {
 		    console.log(err);
 		    // this.resetForm(form);
-		    // this.toastr.error("Insert Failed", "Shirt Detail Register");
+		    this.toastr.error("Submission Failed", "Dynamic Form Submission");
 		  }
 		);
 	}

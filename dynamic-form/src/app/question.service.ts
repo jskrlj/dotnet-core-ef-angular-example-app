@@ -66,6 +66,7 @@ export class QuestionService {
 				type: 'email2',
 				order: 5
 			},
+			
 		];
 		return json_questions;
 	}
@@ -145,6 +146,8 @@ export class QuestionService {
 
 		return questions.sort((a, b) => a.order - b.order);
 	}
+
+	
 
 
 
