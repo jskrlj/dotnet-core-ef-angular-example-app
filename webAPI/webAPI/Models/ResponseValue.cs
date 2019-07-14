@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace webAPI.Models
 {
-    public class Value
+    public class ResponseValue
     {
         [Key]
         public int ID { get; set; }

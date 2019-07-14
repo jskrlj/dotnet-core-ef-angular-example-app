@@ -3,10 +3,29 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace webAPI.Migrations.DynForms
 {
-    public partial class forms_migration : Migration
+    public partial class DynFormsCustom : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "CustomFormFields",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    field_type = table.Column<string>(nullable: true),
+                    value = table.Column<string>(nullable: true),
+                    key = table.Column<string>(nullable: true),
+                    label = table.Column<string>(nullable: true),
+                    required = table.Column<string>(nullable: true),
+                    order = table.Column<string>(nullable: true),
+                    controlType = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CustomFormFields", x => x.ID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Forms",
                 columns: table => new
@@ -18,6 +37,27 @@ namespace webAPI.Migrations.DynForms
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Forms", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CustomFormOptions",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    key = table.Column<string>(nullable: true),
+                    value = table.Column<string>(nullable: true),
+                    CustomFormFieldID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CustomFormOptions", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_CustomFormOptions_CustomFormFields_CustomFormFieldID",
+                        column: x => x.CustomFormFieldID,
+                        principalTable: "CustomFormFields",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,6 +108,11 @@ namespace webAPI.Migrations.DynForms
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_CustomFormOptions_CustomFormFieldID",
+                table: "CustomFormOptions",
+                column: "CustomFormFieldID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Fields_FormID",
                 table: "Fields",
                 column: "FormID");
@@ -88,7 +133,13 @@ namespace webAPI.Migrations.DynForms
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "CustomFormOptions");
+
+            migrationBuilder.DropTable(
                 name: "Values");
+
+            migrationBuilder.DropTable(
+                name: "CustomFormFields");
 
             migrationBuilder.DropTable(
                 name: "Fields");

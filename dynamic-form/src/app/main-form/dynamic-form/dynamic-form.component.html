@@ -1,33 +1,31 @@
-
-
-
 <div>
-	<mat-card>
+	<mat-card >
 		<mat-card-title>
 			<h1>Main form</h1>
 		</mat-card-title>
 
 
-		<form (ngSubmit)="onSubmit()" [formGroup]="form">
-			<div *ngFor="let question of questions" class="form-row">
-				<app-question [question]="question" [form]="form"></app-question>
+		<!-- <div  class="form-row">
+			<strong>customformquestions</strong><br>{{qcs.pl}}
+		</div>  -->
+
+		<form  (ngSubmit)="onSubmit()" [formGroup]="qcs.qForm">
+			<div *ngFor="let question of qcs.customFormQuestions" class="form-row">
+				<app-question [question]="question" [form]="qcs.qForm"></app-question>
 			</div>
-
-
-
 
 			<div class="form-row">
 				<!-- <button type="submit" [disabled]="!form.valid">Submit</button> -->
-				<button mat-raised-button [disabled]="!form.valid" color="primary">Submit</button>
+				<button mat-raised-button [disabled]="!qcs.qForm.valid" color="primary">Submit</button>
 			</div>
 		</form>
 
-		<div *ngIf="payLoad" class="form-row">
+		<!-- <div *ngIf="payLoad" class="form-row">
 			<strong>Saved the following values</strong><br>{{payLoad}}
-		</div>
+		</div> -->
 	</mat-card>
-	<br>
-	<button mat-raised-button (click)="onTest()" color="primary">Test</button>
+
+	<!-- <button mat-raised-button (click)="onTest()" color="primary">Test</button> -->
 
 	
 

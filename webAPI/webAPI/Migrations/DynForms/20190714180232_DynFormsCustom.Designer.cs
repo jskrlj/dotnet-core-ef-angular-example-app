@@ -10,8 +10,8 @@ using webAPI.Models;
 namespace webAPI.Migrations.DynForms
 {
     [DbContext(typeof(DynFormsContext))]
-    [Migration("20190713075212_forms_migration")]
-    partial class forms_migration
+    [Migration("20190714180232_DynFormsCustom")]
+    partial class DynFormsCustom
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,50 @@ namespace webAPI.Migrations.DynForms
                 .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("webAPI.Models.CustomFormField", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("controlType");
+
+                    b.Property<string>("field_type");
+
+                    b.Property<string>("key");
+
+                    b.Property<string>("label");
+
+                    b.Property<string>("order");
+
+                    b.Property<string>("required");
+
+                    b.Property<string>("value");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("CustomFormFields");
+                });
+
+            modelBuilder.Entity("webAPI.Models.CustomFormOption", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CustomFormFieldID");
+
+                    b.Property<string>("key");
+
+                    b.Property<string>("value");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CustomFormFieldID");
+
+                    b.ToTable("CustomFormOptions");
+                });
 
             modelBuilder.Entity("webAPI.Models.Field", b =>
                 {
@@ -51,7 +95,7 @@ namespace webAPI.Migrations.DynForms
                     b.ToTable("Forms");
                 });
 
-            modelBuilder.Entity("webAPI.Models.Value", b =>
+            modelBuilder.Entity("webAPI.Models.ResponseValue", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -74,6 +118,13 @@ namespace webAPI.Migrations.DynForms
                     b.ToTable("Values");
                 });
 
+            modelBuilder.Entity("webAPI.Models.CustomFormOption", b =>
+                {
+                    b.HasOne("webAPI.Models.CustomFormField")
+                        .WithMany("options")
+                        .HasForeignKey("CustomFormFieldID");
+                });
+
             modelBuilder.Entity("webAPI.Models.Field", b =>
                 {
                     b.HasOne("webAPI.Models.Form", "Form")
@@ -81,11 +132,11 @@ namespace webAPI.Migrations.DynForms
                         .HasForeignKey("FormID");
                 });
 
-            modelBuilder.Entity("webAPI.Models.Value", b =>
+            modelBuilder.Entity("webAPI.Models.ResponseValue", b =>
                 {
                     b.HasOne("webAPI.Models.Field", "Field")
                         .WithOne("Value")
-                        .HasForeignKey("webAPI.Models.Value", "FieldID");
+                        .HasForeignKey("webAPI.Models.ResponseValue", "FieldID");
 
                     b.HasOne("webAPI.Models.Form", "Form")
                         .WithMany()

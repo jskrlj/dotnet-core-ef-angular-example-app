@@ -8,3 +8,11 @@
     margin: 0 15px;
   }
 
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }

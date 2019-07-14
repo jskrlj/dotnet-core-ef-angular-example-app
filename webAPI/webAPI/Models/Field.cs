@@ -16,7 +16,7 @@ namespace webAPI.Models
         public int? FormID { get; set; }
         public virtual Form Form { get; set; }
 
-        public virtual Value Value { get; set; }
+        public virtual ResponseValue Value { get; set; }
 
 
     }

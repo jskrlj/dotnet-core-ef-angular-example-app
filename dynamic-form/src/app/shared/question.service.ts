@@ -4,21 +4,21 @@ import { DropdownQuestion } from '../models/question-dropdown';
 import { QuestionBase } from '../models/question-base';
 import { TextboxQuestion } from '../models/question-textbox';
 import { RadioQuestion } from "../models/question-radio";
+import { QuestionControlService } from './question-control.service';
 
 
 @Injectable()
 export class QuestionService {
-	questions: QuestionBase<any>[]
-	
+	questions: QuestionBase<any>[];
 
-	constructor(){
-		
+
+	constructor(private qcs: QuestionControlService) {
+
 	}
 
-	getRemoteQuestions() {
-		// TODO: get from a remote source of question metadata
-		// TODO: make asynchronous
-		let json_questions = [
+
+	getLocalQuestions() {
+		return [
 			{
 				field_type: 'dropdown',
 				key: 'brave',
@@ -66,18 +66,48 @@ export class QuestionService {
 				type: 'email2',
 				order: 5
 			},
-			
+
 		];
-		return json_questions;
+
+	}
+
+	refreshCustomForm(questions: any[]){
+
+
+
+	}
+
+	getRemoteQuestions() {
+		// TODO: get from a remote source of question metadata
+		// TODO: make asynchronous
+
+		// return this.questions;
+
+
+		// this.qcs.getCustomForm()
+		// 	.subscribe(
+		// 		(res: QuestionBase<any>[]) => {
+		// 			console.log(res);
+		// 			this.questions = res;
+		// 		},
+		// 		err => {
+		// 			console.log(err);
+		// 			return '';
+		// 		}
+		// 	);
+
+
+
 	}
 
 
 
 	getQuestions() {
-
+		let remote_questions = Array<any>();
+		console.log("rq" + remote_questions);
 		let questions = []; //: QuestionBase<any>[];
 
-		this.getRemoteQuestions().map(q => {
+		this.getLocalQuestions().map(q => {
 			let tmp_q;
 			//extend maybe?
 			if (q.field_type === 'dropdown') {
@@ -86,27 +116,27 @@ export class QuestionService {
 					key: q.key || '',
 					options: q.options || '',
 					order: q.order || '',
-					value: q.value || '', 
+					value: q.value || '',
 					required: q.required || '',
 					type: q.type || '',
 				});
-			}else if (q.field_type === 'textbox') {
+			} else if (q.field_type === 'textbox') {
 				tmp_q = new TextboxQuestion({
 					label: q.label || '',
 					key: q.key || '',
 					options: q.options || '',
 					order: q.order || '',
-					value: q.value || '', 
+					value: q.value || '',
 					required: q.required || '',
 					type: q.type || '',
 				});
-			}else if (q.field_type === 'radio') {
+			} else if (q.field_type === 'radio') {
 				tmp_q = new RadioQuestion({
 					label: q.label || '',
 					key: q.key || '',
 					options: q.options || '',
 					order: q.order || '',
-					value: q.value || '', 
+					value: q.value || '',
 					required: q.required || '',
 					type: q.type || '',
 				});
@@ -118,7 +148,7 @@ export class QuestionService {
 		return questions.sort((a, b) => a.order - b.order);
 	}
 
-	
+
 
 
 

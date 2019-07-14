@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DynamicFormComponent implements OnInit {
 
-	@Input() questions: QuestionBase<any>[] = [];
+	// @Input() questions: QuestionBase<any>[] = [];
 	form: FormGroup;
 	payLoad = '';
 	  
@@ -20,7 +20,10 @@ export class DynamicFormComponent implements OnInit {
 		private toastr: ToastrService) { }
 
 	ngOnInit() {
-		this.form = this.qcs.toFormGroup(this.questions);
+
+		this.qcs.getCustomForm()
+		
+		// this.qcs.toFormGroup(this.form)
 	}
 
 	onSubmit() {

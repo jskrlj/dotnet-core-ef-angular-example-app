@@ -16,7 +16,11 @@ namespace webAPI.Models
 
         public DbSet<Form> Forms { get; set; }
         public DbSet<Field> Fields{ get; set; }
-        public DbSet<Value> Values { get; set; }
+        public DbSet<ResponseValue> Values { get; set; }
+
+        public DbSet<CustomFormField> CustomFormFields { get; set; }
+        public DbSet<CustomFormOption> CustomFormOptions { get; set; }
+
 
     }
 }

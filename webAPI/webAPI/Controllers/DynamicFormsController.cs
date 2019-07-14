@@ -86,7 +86,7 @@ namespace webAPI.Controllers
                 Field tmp_fi = new Field();
                 tmp_fi.Name = fi.Name;
                 tmp_fi.ID = fi.ID;
-                Value tmp_val = new Value();
+                ResponseValue tmp_val = new ResponseValue();
                 tmp_val.value = fi.Value.value;
                 tmp_val.ID = fi.Value.ID;
                 tmp_fi.Value = tmp_val;
@@ -128,7 +128,7 @@ namespace webAPI.Controllers
                 for (int i = 0; i < myKeys.Count; i++)
                 {
                     Field tfield = new Field();
-                    Value tvalue = new Value();
+                    ResponseValue tvalue = new ResponseValue();
 
                     tfield.Name = myKeys[i];
                     tvalue.value = myValues[i];

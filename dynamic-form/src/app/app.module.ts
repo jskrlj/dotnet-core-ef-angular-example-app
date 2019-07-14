@@ -22,6 +22,7 @@ import { MatSnackBarModule,
   MatTableModule } from '@angular/material';
 import { MainFormComponent } from './main-form/main-form.component';
 import { SubmissionListComponent } from './submission-list/submission-list.component';
+import { QuestionControlService } from './shared/question-control.service';
 
 @NgModule({
   imports: [ BrowserModule, ReactiveFormsModule,
@@ -41,7 +42,8 @@ import { SubmissionListComponent } from './submission-list/submission-list.compo
     ToastrModule.forRoot(),
   ],
   declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent,routingComponents, MainFormComponent, SubmissionListComponent],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  providers: [QuestionControlService],
 })
 export class AppModule {
   constructor() {
