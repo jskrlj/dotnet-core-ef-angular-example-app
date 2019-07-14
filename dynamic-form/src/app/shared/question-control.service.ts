@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { QuestionBase } from './question-base';
+import { QuestionBase } from '../models/question-base';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { SubmissionForm } from './submission-form.model';
+import { SubmissionForm } from '../models/submission-form.model';
 
 @Injectable()
 export class QuestionControlService {
@@ -33,8 +33,9 @@ export class QuestionControlService {
 		this.http.get(this.rootURL + "/DynamicForms")
 			.toPromise()
 			.then((res: Array<SubmissionForm>) => {
-				console.log(res);
-				this.list = res;
+				// questions.sort((a, b) => a.order - b.order);
+
+				this.list = res.sort((a,b) => b.ID - a.ID);
 			},
 			err=>{
 				console.log(err);

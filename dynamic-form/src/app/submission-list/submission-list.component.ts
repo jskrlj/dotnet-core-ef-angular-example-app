@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionControlService } from '../question-control.service';
+import { QuestionControlService } from '../shared/question-control.service';
 
 
 @Component({

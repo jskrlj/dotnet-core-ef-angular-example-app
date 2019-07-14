@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { DropdownQuestion } from './question-dropdown';
-import { QuestionBase } from './question-base';
-import { TextboxQuestion } from './question-textbox';
-import { RadioQuestion } from "./question-radio";
+import { DropdownQuestion } from '../models/question-dropdown';
+import { QuestionBase } from '../models/question-base';
+import { TextboxQuestion } from '../models/question-textbox';
+import { RadioQuestion } from "../models/question-radio";
 
 
 @Injectable()
@@ -114,35 +114,6 @@ export class QuestionService {
 			questions.push(tmp_q);
 		});
 
-		// let questions: QuestionBase<any>[]= [
-
-		// 	new DropdownQuestion({
-		// 		key: 'brave',
-		// 		label: 'Bravery Rating',
-		// 		options: [
-		// 			{ key: 'solid', value: 'Solid' },
-		// 			{ key: 'great', value: 'Great' },
-		// 			{ key: 'good', value: 'Good' },
-		// 			{ key: 'unproven', value: 'Unproven' }
-		// 		],
-		// 		order: 3
-		// 	}),
-
-		// 	new TextboxQuestion({
-		// 		key: 'firstName',
-		// 		label: 'First name',
-		// 		value: 'Bombasto',
-		// 		required: true,
-		// 		order: 1
-		// 	}),
-
-		// 	new TextboxQuestion({
-		// 		key: 'emailAddress',
-		// 		label: 'Email',
-		// 		type: 'email',
-		// 		order: 2
-		// 	})
-		// ];
 
 		return questions.sort((a, b) => a.order - b.order);
 	}

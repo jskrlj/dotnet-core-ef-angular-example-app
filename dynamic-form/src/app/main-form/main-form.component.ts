@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionService } from '../question.service';
+import { QuestionService } from '../shared/question.service';
 
 @Component({
 	selector: 'app-main-form',
