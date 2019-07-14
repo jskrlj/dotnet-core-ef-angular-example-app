@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MainFormComponent } from "./main-form/main-form.component";
 import { SubmissionListComponent } from "./submission-list/submission-list.component";
+import { CustomizeFormComponent } from './customize-form/customize-form.component';
 const routes: Routes = [
   { path: '',   redirectTo: '/main-form', pathMatch: 'full' },
   // { path: 'payment-details', component: PaymentDetailsComponent },
   // { path: 'shirt-details', component: ShirtDetailsComponent },
-  // { path: 'dynamic-form-example', component: DynamicFormExampleComponent },
+  { path: 'customize-form', component: CustomizeFormComponent },
   { path: 'main-form',  component: MainFormComponent },
   { path: 'submission-list',  component: SubmissionListComponent },
 
@@ -28,4 +29,4 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
-export const routingComponents = [MainFormComponent, SubmissionListComponent]; 
+export const routingComponents = [MainFormComponent, SubmissionListComponent,CustomizeFormComponent]; 

@@ -23,6 +23,7 @@ import { MatSnackBarModule,
 import { MainFormComponent } from './main-form/main-form.component';
 import { SubmissionListComponent } from './submission-list/submission-list.component';
 import { QuestionControlService } from './shared/question-control.service';
+import { CustomizeFormComponent } from './customize-form/customize-form.component';
 
 @NgModule({
   imports: [ BrowserModule, ReactiveFormsModule,
@@ -41,7 +42,7 @@ import { QuestionControlService } from './shared/question-control.service';
     AppRoutingModule,
     ToastrModule.forRoot(),
   ],
-  declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent,routingComponents, MainFormComponent, SubmissionListComponent],
+  declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent,routingComponents, MainFormComponent, SubmissionListComponent, CustomizeFormComponent],
   bootstrap: [ AppComponent ],
   providers: [QuestionControlService],
 })
