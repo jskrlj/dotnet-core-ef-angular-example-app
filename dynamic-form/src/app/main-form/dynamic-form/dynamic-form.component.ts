@@ -22,13 +22,14 @@ export class DynamicFormComponent implements OnInit {
 	ngOnInit() {
 
 		this.qcs.getCustomForm()
-		
+
 		// this.qcs.toFormGroup(this.form)
 	}
 
 	onSubmit() {
-		this.payLoad = JSON.stringify(this.form.value);
-		this.insertRecord(this.form)
+		this.payLoad = JSON.stringify(this.qcs.qForm.value);
+		// console.log(this.payLoad);
+		this.insertRecord(this.qcs.qForm)
 		// this.qcs.postFormData();
 	}
 
