@@ -1,15 +1,23 @@
 <div>
-	<mat-card >
+	<mat-form-field>
+		<mat-label>Custom form ID</mat-label>
+		<mat-select (selectionChange)="onFormSelection($event)">
+			<mat-option *ngFor="let form of qcs.forms" [value]="form.ID">
+				{{form.ID}}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-card>
 		<mat-card-title>
 			<h1>Main form</h1>
 		</mat-card-title>
 
 
-		<!-- <div  class="form-row">
-			<strong>customformquestions</strong><br>{{qcs.pl}}
-		</div>  -->
+		<!-- <div class="form-row">
+			<strong>customformquestions</strong><br>{{qcs.pyld.value}}
+		</div> -->
 
-		<form  (ngSubmit)="onSubmit()" [formGroup]="qcs.qForm">
+		<form (ngSubmit)="onSubmit()" [formGroup]="qcs.qForm">
 			<div *ngFor="let question of qcs.customFormQuestions" class="form-row">
 				<app-question [question]="question" [form]="qcs.qForm"></app-question>
 			</div>
@@ -27,7 +35,7 @@
 
 	<!-- <button mat-raised-button (click)="onTest()" color="primary">Test</button> -->
 
-	
+
 
 
 

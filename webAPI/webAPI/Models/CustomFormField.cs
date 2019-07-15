@@ -27,6 +27,10 @@ namespace webAPI.Models
 
         public ICollection<CustomFormOption> options { get; set; }
 
+        public int? CustomFormsCollectionID { get; set; }
+
+        public CustomFormsCollection customFormCollection { get; set; }
+
 
 
 

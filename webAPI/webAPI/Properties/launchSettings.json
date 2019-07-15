@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/DynamicForms/1",
+      "launchUrl": "api/CustomForm/1",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

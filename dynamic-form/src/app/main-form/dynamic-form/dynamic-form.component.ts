@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { QuestionBase } from '../../models/question-base';
 import { QuestionControlService } from '../../shared/question-control.service';
 import { ToastrService } from 'ngx-toastr';
+import { CustomForm } from 'src/app/models/custom-form.model';
 
 @Component({
 	selector: 'app-dynamic-form',
@@ -15,14 +16,19 @@ export class DynamicFormComponent implements OnInit {
 	// @Input() questions: QuestionBase<any>[] = [];
 	form: FormGroup;
 	payLoad = '';
-	  
+	// forms: CustomForm[] = [
+	// 	{ ID: 1, name: '', CustomFormFields: [] },
+	// 	{ ID: 2, name: '', CustomFormFields: [] },
+	// ];
+	// selectedOption = '1';
+
+
 	constructor(private qcs: QuestionControlService,
 		private toastr: ToastrService) { }
 
 	ngOnInit() {
-
-		this.qcs.getCustomForm()
-
+		this.qcs.getCustomForms();
+		// this.qcs.getCustomForm();
 		// this.qcs.toFormGroup(this.form)
 	}
 
@@ -33,29 +39,34 @@ export class DynamicFormComponent implements OnInit {
 		// this.qcs.postFormData();
 	}
 
-	onTest(){
+	onTest() {
 		this.qcs.refreshList();
 	}
 
 	resetForm(form?: FormGroup) {
 		if (form != null)
-			form.reset();		
+			form.reset();
 	}
 
 	insertRecord(form: FormGroup) {
 		this.qcs.postFormFields(this.payLoad).subscribe(
-		  res => {
-			this.resetForm(form);
-			console.log(res);
-		    this.toastr.success("Submitted successfully", "Dynamic Form Submission");
-		    // this.service.refreshList();
-		  },
-		  err => {
-		    console.log(err);
-		    // this.resetForm(form);
-		    this.toastr.error("Submission Failed", "Dynamic Form Submission");
-		  }
+			res => {
+				this.resetForm(form);
+				console.log(res);
+				this.toastr.success("Submitted successfully", "Dynamic Form Submission");
+				// this.service.refreshList();
+			},
+			err => {
+				console.log(err);
+				// this.resetForm(form);
+				this.toastr.error("Submission Failed", "Dynamic Form Submission");
+			}
 		);
+	}
+
+	onFormSelection(event){
+		this.qcs.customFormID = event.value;
+		this.qcs.getCustomForm();
 	}
 
 

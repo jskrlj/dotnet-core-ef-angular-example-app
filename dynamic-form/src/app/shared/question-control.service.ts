@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { QuestionBase } from '../models/question-base';
@@ -7,6 +7,7 @@ import { SubmissionForm } from '../models/submission-form.model';
 import { DropdownQuestion } from '../models/question-dropdown';
 import { TextboxQuestion } from '../models/question-textbox';
 import { RadioQuestion } from '../models/question-radio';
+import { CustomForm } from '../models/custom-form.model';
 
 @Injectable()
 export class QuestionControlService {
@@ -15,10 +16,16 @@ export class QuestionControlService {
 	customFormQuestions: QuestionBase<any>[];
 	qForm: FormGroup;
 	pl: string;
+	customFormID: string = '1';
+	forms: CustomForm[];
 
 	constructor(private http: HttpClient) {
 		this.qForm = new FormGroup({});
-	 }
+	}
+
+	get payLoad() {
+		return this.pl;
+	}
 
 	toFormGroup() {
 		let group: any = {};
@@ -28,6 +35,7 @@ export class QuestionControlService {
 				: new FormControl(question.value || '');
 		});
 		this.qForm = new FormGroup(group);
+
 	}
 
 	postFormFields(formData: string) {
@@ -49,8 +57,20 @@ export class QuestionControlService {
 			);
 	}
 
+	getCustomForms() {
+		this.http.get(this.rootURL + "/CustomForm/")
+			.toPromise()
+			.then((res: CustomForm[]) => {
+				this.forms = res;
+			},
+				err => {
+					console.log(err);
+				}
+			);
+	}
+
 	getCustomForm() {
-		this.http.get(this.rootURL + "/CustomForm")
+		this.http.get(this.rootURL + "/CustomForm/" + this.customFormID)
 			.toPromise()
 			.then(
 				// (res: Array<QuestionBase<any>>) => {
@@ -59,7 +79,6 @@ export class QuestionControlService {
 				(res: QuestionBase<any>[]) => {
 					this.customFormQuestions = res;
 					let questions = []; //: QuestionBase<any>[];
-
 					this.customFormQuestions.map(q => {
 						let tmp_q;
 						if (q.field_type === 'dropdown') {
@@ -96,6 +115,7 @@ export class QuestionControlService {
 							// 	type: q.type || '',
 							// });
 						}
+
 						questions.push(tmp_q);
 
 					});
@@ -104,7 +124,7 @@ export class QuestionControlService {
 					this.customFormQuestions = questions;
 					this.pl = JSON.stringify(this.customFormQuestions);
 					this.toFormGroup();
-				
+
 
 				},
 				err => {

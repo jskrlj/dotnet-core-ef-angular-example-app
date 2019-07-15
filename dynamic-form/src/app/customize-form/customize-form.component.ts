@@ -43,7 +43,7 @@ export class CustomizeFormComponent implements OnInit {
 	}
 
 	onSubmit(form: FormGroup){
-		console.log(form.value);
+		console.log(form.value.questions);
 		this.myDynamicForm.reset();
 		this.myDynamicForm = this.fb.group({
 			questions: this.fb.array([]),

@@ -4,6 +4,5 @@ export class SubmissionForm {
     ID: number;
     Fields: SubmissionField[];
     Name: string;
-
-    
 }
+

@@ -27,21 +27,79 @@ namespace webAPI.Controllers
         public async Task<IActionResult> Get()
         {
 
-            var form = await _context.CustomFormFields.Include(fi => fi.options).ToListAsync();
+            //var form = await _context.CustomFormFields.Include(fi => fi.options).ToListAsync();
 
-           
+            var forms = await _context.CustomFormsCollection.ToListAsync();
+
+
+            //var form = await _context.CustomFormsCollection.ToListAsync();
+            //for (var i = 0; i < form.Count; i++)
+            //{
+            //      _context.Entry(form[i]).Collection(f => f.CustomFormFields).Load();
+            //    //    for (var j = 0; i < form[i].CustomFormFields.Count; j++)
+            //    foreach (var fi in form[i].CustomFormFields)
+            //    {
+            //        fi.customFormCollection = null;
+
+            //        //        form[i].CustomFormFields[j].= null;
+            //        _context.Entry(fi).Collection(fld => fld.options).Load();
+            //        //    }
+            //    }
+
+            //}
+
+
+            //var form1 = _context.CustomFormsCollection.Find(1);
+            //_context.Entry()
+
+
+            //var form = await _context.CustomFormsCollection
+            //    .Include(fo => fo.CustomFormFields)
+            //    .ToListAsync(); //.ToListAsync();
 
 
 
-            if (form == null)
+
+            if (forms == null)
             {
                 return NotFound();
             }
 
 
-            return Ok(form);
+            return Ok(forms);
 
 
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var custom_form = await _context.CustomFormsCollection
+                .Include(fo => fo.CustomFormFields).ToListAsync();
+
+                
+            var form_fields = custom_form.Where(f => f.ID == id).ToList()[0];
+            //custom_form.
+            //custom_form = custom_form[id];
+            //var custom_form = await _context.CustomFormsCollection.FindAsync(id);
+            //custom_form = custom_form.CustomFormFields.;
+            //var form_fields = f[id].CustomFormFields;
+
+            foreach (var fi in form_fields.CustomFormFields) {
+                fi.customFormCollection = null;
+            }
+
+            if (custom_form == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(form_fields.CustomFormFields);
         }
 
 
