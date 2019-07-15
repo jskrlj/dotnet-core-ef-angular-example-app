@@ -89,10 +89,18 @@ namespace webAPI.Controllers
             //var custom_form = await _context.CustomFormsCollection.FindAsync(id);
             //custom_form = custom_form.CustomFormFields.;
             //var form_fields = f[id].CustomFormFields;
+            foreach (var fi in form_fields.CustomFormFields)
+            {
+                _context.Entry(fi).Collection(fd => fd.options).Load();
+            }
 
             foreach (var fi in form_fields.CustomFormFields) {
                 fi.customFormCollection = null;
             }
+           
+
+
+
 
             if (custom_form == null)
             {
