@@ -7,9 +7,9 @@
 			</mat-option>
 		</mat-select>
 	</mat-form-field>
-	<mat-card>
-		<mat-card-title>
-			<h1>Main form</h1>
+	<mat-card *ngIf="qcs.customFormID">
+		<mat-card-title *ngIf="qcs.customFormID">
+			<h1>{{qcs.forms[qcs.customFormID-1].name}}</h1>
 		</mat-card-title>
 
 
@@ -22,7 +22,7 @@
 				<app-question [question]="question" [form]="qcs.qForm"></app-question>
 			</div>
 
-			<div class="form-row">
+			<div class="form-row" *ngIf="qcs.customFormQuestions">
 				<!-- <button type="submit" [disabled]="!form.valid">Submit</button> -->
 				<button mat-raised-button [disabled]="!qcs.qForm.valid" color="primary">Submit</button>
 			</div>

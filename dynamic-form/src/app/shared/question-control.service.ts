@@ -16,7 +16,7 @@ export class QuestionControlService {
 	customFormQuestions: QuestionBase<any>[];
 	qForm: FormGroup;
 	pl: string;
-	customFormID: string = '1';
+	customFormID: number;
 	forms: CustomForm[];
 
 	constructor(private http: HttpClient) {
@@ -70,6 +70,7 @@ export class QuestionControlService {
 	}
 
 	getCustomForm() {
+		console.log("Form name: " + this.forms[this.customFormID - 1].name);
 		this.http.get(this.rootURL + "/CustomForm/" + this.customFormID)
 			.toPromise()
 			.then(
